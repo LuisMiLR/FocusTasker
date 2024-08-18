@@ -38,9 +38,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className='flex flex-col min-h-[calc(100vh-120px)]'>
+      <div className='flex flex-col backdrop-blur-xl  min-h-[calc(100vh-120px)]'>
         <div className='flex flex-col items-center flex-grow'>
-          <div className='max-w-md w-full shadow-md bg-gray-50 p-8 rounded-md  mt-10'>
+          <div className='max-w-md w-full shadow-md  bg-gray-50 p-8 rounded-md  mt-16'>
             <div className='flex max-w-sm rounded-xl items-center border border-gray-200 mb-4'>
               <img
                 className='object-cover rounded-full w-12 h-12 m-2'
@@ -85,13 +85,7 @@ function App() {
                         : 'scale-default'
                     }`}
                   >
-                    {/* <span //a retirer si pas de bug
-                      // className={`${
-                      //   task.completed ? 'text-slate-300' : ''
-                      // }flex-1`}
-                    > */}
                     {task.text}
-                    {/* </span> //a retirer si pas de bug */}
                     <div className='flex space-x-2'>
                       <button
                         onClick={() => toggleTaskCompletion(index)}

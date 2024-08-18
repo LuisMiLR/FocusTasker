@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function NavBar() {
   return (
-    <div className='bg-gray-200 flex flex-col sm:flex-row justify-between items-center p-4'>
+    <div className=' bg-gray-200 shadow-sm flex flex-col sm:flex-row justify-between items-center p-4'>
       <div className='flex items-center sm:mb-0 pl-32'>
         <span className='text-sky-600 text-2xl font-bold'>Focus</span>
         <p className='  text-slate-700 text-2xl font-semibold '>Tasker</p>
