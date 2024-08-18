@@ -38,9 +38,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className='flex flex-col backdrop-blur-xl  min-h-[calc(100vh-120px)]'>
+      <div className='flex flex-col min-h-[calc(100vh-120px)]'>
         <div className='flex flex-col items-center flex-grow'>
-          <div className='max-w-md w-full shadow-md  bg-gray-50 p-8 rounded-md  mt-16'>
+          <div className='max-w-md w-full shadow-sm bg-slate-50 p-8 rounded-md mt-16'>
             <div className='flex max-w-sm rounded-xl items-center border border-gray-200 mb-4'>
               <img
                 className='object-cover rounded-full w-12 h-12 m-2'
@@ -56,19 +56,19 @@ function App() {
                 </p>
               </div>
             </div>
-            <div className='flex flex-col mt-8  max-w-md w-full'>
+            <div className='flex flex-col mt-8 max-w-md w-full'>
               <form
                 onSubmit={addTask} //associe la fonction addtask à l evenement de soumission du formulaire
-                className='flex font-medium  text-gray-800 w-full mb-4'
+                className='flex font-medium text-gray-800 w-full mb-4'
               >
                 <input
                   type='text'
                   value={newTask} //la prop value affiche la valeur de l'état (c'est un input controlled)
                   onChange={e => setNewTask(e.target.value)} //prop onChange met à jour l'état à chaque fois que la valeur de l'input change
-                  className='bg-gray-100 h-12 rounded-md p-2  border border-gray-200 w-full font-light outline-none'
+                  className='bg-gray-100 h-12 rounded-md p-2 border border-gray-200 w-full font-light outline-none'
                   placeholder='Add a new task'
                 />
-                <button className='bg-sky-600  rounded-md px-5 ml-1 shadow-sm text-white hover:bg-sky-400 transmition'>
+                <button className='bg-sky-600 rounded-md px-5 ml-1 shadow-sm text-white hover:bg-sky-400 transmition'>
                   Add
                 </button>
               </form>
@@ -81,7 +81,7 @@ function App() {
                     key={index}
                     className={`bg-sky-100 min-h-12 flex justify-between items-center transition text-lg text-slate-600 font-normal p-3 rounded-md my-2 transform ${
                       task.completed
-                        ? 'scale-completed bg-slate-200 text-slate-300  '
+                        ? 'scale-completed bg-slate-200 text-slate-300/75  '
                         : 'scale-default'
                     }`}
                   >
