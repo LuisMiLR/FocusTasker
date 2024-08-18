@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e5e7eb;
+}
+
+
+
+.scale-completed {
+  transform: scale3d(0.97, 0.97, 0.97);
+}
+
+.scale-default {
+  transform: scale3d(1, 1, 1);
+}
+
+.fade-deleting {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+
