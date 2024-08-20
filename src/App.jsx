@@ -6,6 +6,7 @@ import {
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import './index.css';
+import PomodoroTimer from './components/PomodoroTimer';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -38,10 +39,11 @@ function App() {
   return (
     <>
       <NavBar />
-      <div className='flex flex-col min-h-[calc(100vh-120px)]'>
+      <div className='flex flex-col mb-8 min-h-[calc(100vh-120px)]'>
         <div className='flex flex-col items-center flex-grow'>
-          <div className='max-w-md w-full shadow-sm bg-slate-50 p-8 rounded-md mt-16'>
-            <div className='flex max-w-sm rounded-xl items-center border border-gray-200 mb-4'>
+          <div className='max-w-md w-full shadow-sm bg-slate-50 p-8 rounded-md mt-4'>
+            <PomodoroTimer />
+            <div className='flex max-w-sm rounded-xl items-center border border-gray-200 mt-8 mb-4'>
               <img
                 className='object-cover rounded-full w-12 h-12 m-2'
                 src='https://lmrobles.fr/assets/luisMiguelRobles-RESoZECz.png'
@@ -49,7 +51,7 @@ function App() {
               />
               <div className='w-full p-3'>
                 <p className=' text-slate-700 ml-1 text-xl font-medium'>
-                  Luis Miguel todo's
+                  Todo List
                 </p>
                 <p className=' text-slate-600 ml-1 text-base font-normal'>
                   {today}
@@ -73,15 +75,16 @@ function App() {
                 </button>
               </form>
             </div>
-
-            <div className='mt-4'>
+          </div>
+          <div className='max-w-md w-full shadow-sm bg-slate-50 p-8 rounded-md mt-4'>
+            <div className=''>
               <ul className='max-w-md w-full'>
                 {tasks.map((task, index) => (
                   <li
                     key={index}
                     className={`bg-sky-100 min-h-12 flex justify-between items-center transition text-lg text-slate-600 font-normal p-3 rounded-md my-2 transform ${
                       task.completed
-                        ? 'scale-completed bg-slate-200 text-slate-300/75  '
+                        ? 'scale-completed bg-slate-200 text-slate-300  '
                         : 'scale-default'
                     }`}
                   >
