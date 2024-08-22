@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import {
   ClipboardDocumentCheckIcon,
-  TrashIcon,
+  TrashIcon, PlayIcon, PauseIcon
+  
 } from '@heroicons/react/24/outline';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
@@ -55,8 +56,8 @@ function App() {
                 alt='Profil'
               />
               <div>
-                <p className='text-slate-700 text-xl font-medium'>Todo List</p>
-                <p className='text-slate-600 text-base'>{today}</p>
+                <p className='text-slate-800 text-xl font-medium'>Todo List</p>
+                <p className='text-slate-800  text-base'>{today}</p>
               </div>
             </div>
             <form onSubmit={addTask} className='flex items-center mb-4'>
@@ -69,13 +70,13 @@ function App() {
               />
               <button
                 type='submit'
-                className='bg-sky-600 rounded-md px-4 py-2 ml-2 text-white hover:bg-sky-500 transition'
+                className='bg-sky-800 rounded-md px-4 py-2 ml-2 text-white hover:bg-sky-500 transition shadow-sm'
               >
                 Add
               </button>
             </form>
           </div>
-          <div className='max-w-md w-full shadow-md bg-slate-50 p-8 rounded-md mt-4'>
+          <div className='max-w-md w-full shadow-md bg-slate-50 p-8 rounded-md mt-4'> 
             <ul>
               {tasks.map((task, index) => (
                 <li
