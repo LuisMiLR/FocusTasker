@@ -16,9 +16,8 @@ export default function PomodoroTimer() {
   useEffect(() => {
     let interval = null;
     if (isActive && secondsLeft > 0) {
-      interval = setInterval(() => {
-        setSecondsLeft(seconds => seconds - 1);
-      }, 1000);
+      interval = setInterval(() => setSecondsLeft(seconds => seconds - 1),
+       1000);
     } else if (secondsLeft === 0) {
       clearInterval(interval);
     }
@@ -38,76 +37,45 @@ export default function PomodoroTimer() {
   };
 
   return (
-    <div className='max-w-md w-full  rounded-md flex flex-col items-center'>
-      <div className='flex max-w-md  rounded-xl items-center border border-gray-200 mb-4'>
-        
-        <div className='w-full p-3'>
-          <p className=' text-slate-700 ml-1 text-xl font-medium '>
-            Pomodoro Timer
-          </p>
-          <div className='flex space-x-2 mt-4'>
+    <div className='max-w-md w-full rounded-md flex flex-col items-center'>
+      <div className='flex flex-col items-center w-full border border-gray-200 rounded-xl p-4 mb-4'>
+        <p className='text-slate-700 text-xl font-medium mb-2'>Pomodoro Timer</p>
+        <div className='flex space-x-2 mb-4'>
+          {['pomodoro', 'shortBreak', 'longBreak'].map(m => (
             <button
-              onClick={() => handleModeChange('pomodoro')} // pour le bouton Pomodoro
-              className={`rounded-md px-6 py-3 ml-1 shadow-sm text-white ${
-                mode === 'pomodoro' ? 'bg-sky-400 text-white' : `bg-sky-600`
-              }`}
+              key={m}
+              onClick={() => handleModeChange(m)}
+              className={`rounded-md px-4 py-2 ${mode === m ? 'bg-sky-500 text-white' : 'bg-gray-300 text-black'} transition`}
             >
-              Pomodoro
+              {m.charAt(0).toUpperCase() + m.slice(1)}
             </button>
-            <button
-              onClick={() => handleModeChange('shortBreak')}
-              className={`rounded-md px-5 py-2 ml-1 shadow-sm text-white ${
-                mode === 'shortBreak'
-                  ? 'bg-yellow-500 text-white'
-                  : 'bg-yellow-600 text-black'
-              }`}
-            >
-              shortBreak
-            </button>
-            <button
-              onClick={() => handleModeChange('longBreak')}
-              className={`rounded-md px-5 py-2 ml-1 shadow-sm text-white ${
-                mode === 'longBreak'
-                  ? 'bg-emerald-500 text-white'
-                  : 'bg-emerald-600 text-black'
-              }`}
-            >
-              LongBreak
-            </button>
-          </div>
+          ))}
         </div>
-      </div>
-      <div className=' bg-gray-300 w-96   rounded-md flex flex-col items-center'>
-        <div className='p-10'>
+        <div className='w-80'>
           <CircularProgressbar
             value={(secondsLeft / modes[mode]) * 100}
             text={formatTime(secondsLeft)}
             styles={buildStyles({
               strokeLinecap: 'butt',
-              textColor: '#fff',
-              pathColor: '#e0f2fe',
+              textColor: '#000',
+              pathColor: '#4caf50',
             })}
           />
         </div>
       </div>
-      <div className='w-full p-3 border-3  flex justify-center  max-w-md  rounded-xl items-center border border-gray-200 mb-4 '>
-        <div className='flex space-x-4 '>
-          <button
-            onClick={() => setIsActive(!isActive)}
-            className='rounded-md px-5 py-2 ml-1 shadow-sm bg-yellow-500 text-white'
-          >
-            {isActive ? 'Pause' : 'Start'}
-          </button>
-          <button
-            onClick={() => setIsActive(false)}
-            className='rounded-md px-5 py-2 ml-1 shadow-sm  bg-sky-500 text-white'
-          >
-            Reset
-          </button>
-        </div>
-        {/* <div className='mt-4'>
-          <button className='px-4 py-2 bg-gray-500 text-white'>Settings</button>
-        </div> */}
+      <div className='w-full flex justify-center space-x-4'>
+        <button
+          onClick={() => setIsActive(prev => !prev)}
+          className='rounded-md px-5 py-2 bg-yellow-500 text-white'
+        >
+          {isActive ? 'Pause' : 'Start'}
+        </button>
+        <button
+          onClick={() => { setIsActive(false); setSecondsLeft(modes[mode]); }}
+          className='rounded-md px-5 py-2 bg-sky-500 text-white'
+        >
+          Reset
+        </button>
       </div>
     </div>
   );
