@@ -1,18 +1,21 @@
 import { useState } from 'react';
 import {
   ClipboardDocumentCheckIcon,
-  TrashIcon, PlayIcon, PauseIcon
-  
+  TrashIcon,
+  PlayIcon,
+  PauseIcon,
 } from '@heroicons/react/24/outline';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import './index.css';
 import PomodoroTimer from './components/PomodoroTimer';
+import { ToastContainer, Bounce, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState(''); //met à jour l'état de l'input
-  const [taskToDelete, setTaskToDelete] = useState(null); 
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   const today = new Date().toDateString();
 
@@ -36,11 +39,11 @@ function App() {
   };
 
   const deleteTask = index => {
-    setTaskToDelete(index); 
     setTimeout(() => {
-      setTasks(tasks.filter((_, i) => i !== index)); 
-      setTaskToDelete(null);  
-    }, 300);  
+      setTaskToDelete(index);
+      setTasks(tasks.filter((_, i) => i !== index));
+      setTaskToDelete(null);
+    }, 200);
   };
   return (
     <>
@@ -56,8 +59,8 @@ function App() {
                 alt='Profil'
               />
               <div>
-                <p className='text-slate-800 text-xl font-medium'>Todo List</p>
-                <p className='text-slate-800  text-base'>{today}</p>
+                <p className='text-customBlue text-xl font-normal'>Todo List</p>
+                <p className='text-customBlue text-base font-normal'>{today}</p>
               </div>
             </div>
             <form onSubmit={addTask} className='flex items-center mb-4'>
@@ -76,42 +79,59 @@ function App() {
               </button>
             </form>
           </div>
-          <div className='max-w-md w-full shadow-md bg-slate-50 p-8 rounded-md mt-4'> 
-            <ul>
-              {tasks.map((task, index) => (
-                <li
-                  key={index}
-                  className={`flex justify-between items-center bg-sky-100 p-3 rounded-md mb-2 transition ${
-                    task.completed
-                      ? 'bg-slate-200 text-slate-400'
-                      : 'bg-sky-100'
-                  }${taskToDelete === index ? 'fade-deleting' : ''}`}
-                >
-                  {task.text}
-                  <div className='flex space-x-2'>
-                    <button
-                      onClick={() => toggleTaskCompletion(index)}
-                      className={`transition ${
-                        task.completed
-                          ? 'text-green-600'
-                          : 'text-gray-500 hover:text-green-600'
-                      }`}
-                    >
-                      <ClipboardDocumentCheckIcon className='h-5 w-5' />
-                    </button>
-                    <button
-                      onClick={() => deleteTask(index)}
-                      className='text-gray-500 hover:text-red-600 transition'
-                    >
-                      <TrashIcon className='h-5 w-5' />
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <div className='max-w-md w-full shadow-md bg-slate-50 p-8 rounded-md mt-4'>
+            {tasks.length > 0 ? (
+              <ul>
+                {tasks.map((task, index) => (
+                  <li
+                    key={index}
+                    className={`flex justify-between text-customBlue items-center bg-sky-100 p-3 rounded-md mb-2 transition ${
+                      task.completed
+                        ? 'scale-completed bg-slate-200 text-slate-300'
+                        : 'scale-default bg-sky-100'
+                    }${taskToDelete === index ? 'fade-deleting' : ''}`}
+                  >
+                    {task.text}
+                    <div className='flex space-x-2'>
+                      <button
+                        onClick={() => toggleTaskCompletion(index)}
+                        className={`transition ${
+                          task.completed
+                            ? 'text-green-600'
+                            : 'text-gray-500 hover:text-green-600'
+                        }`}
+                      >
+                        <ClipboardDocumentCheckIcon className='h-5 w-5' />
+                      </button>
+                      <button
+                        onClick={() => deleteTask(index)}
+                        className='text-gray-500 hover:text-red-600 transition'
+                      >
+                        <TrashIcon className='h-5 w-5' />
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className='text-gray-500 py-2 text-center'>No tasks available</p>
+            )}
           </div>
         </div>
       </div>
+      <ToastContainer
+        position='bottom-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+        transition={Slide}
+      />
       <Footer />
     </>
   );

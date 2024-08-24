@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+/* Apply font globally */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,8 +19,6 @@
 body {
   background-color: #e5e7eb;
 }
-
-
 
 .scale-completed {
   transform: scale3d(0.97, 0.97, 0.97);
@@ -24,7 +30,9 @@ body {
 
 .fade-deleting {
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 3s ease-in-out;
+  color: "black",
 }
-
-
+ 
+/* .progress-bar-transition {
+  transition: stroke 2s ease; /* Durée et effet de la transition }*/
