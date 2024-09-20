@@ -20,7 +20,7 @@ export default function PomodoroTimer() {
 
   const modes = {
     pomodoro: 1500, // 25 min
-    shortBreak: 300, // 5 min
+    shortBreak: 100, // 5 min
     longBreak: 900, // 15 min
   };
 
@@ -48,11 +48,15 @@ export default function PomodoroTimer() {
         toast.info('Time for a short break!', {
           position: "bottom-right",
           autoClose: 5000,
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
-          draggable: true,
+          draggable: false,
           theme: "colored",
+          style: {
+            backgroundColor : '#075985',
+            color: '#ffffff',
+          },
           transition: Slide,
         });
         handleModeChange('shortBreak');
@@ -61,11 +65,15 @@ export default function PomodoroTimer() {
         toast.info('Back to work!', {
           position: "bottom-right",
           autoClose: 5000,
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
-          draggable: true,
+          draggable: false,
           theme: "colored",
+          style: {
+            backgroundColor : '#075985',
+            color: '#ffffff',
+          },
           transition: Slide,
         });
         handleModeChange('pomodoro');
@@ -74,11 +82,15 @@ export default function PomodoroTimer() {
         toast.info('Back to work!', {
           position: "bottom-right",
           autoClose: 5000,
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
-          draggable: true,
+          draggable: false,
           theme: "colored",
+          style: {
+            backgroundColor : '#075985',
+            color: '#ffffff',
+          },
           transition: Slide,
         });
         handleModeChange('pomodoro');
