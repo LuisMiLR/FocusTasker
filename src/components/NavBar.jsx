@@ -4,7 +4,7 @@ export default function NavBar() {
   return (
     <div className=' bg-gray-200 flex flex-col sm:flex-row justify-between items-center p-4'>
       <div className='flex items-center sm:mb-0 pl-32'>
-        <img class="w-10" src="/public/images/FocusTasker_logo.png" alt="logo du site" />
+        <img className="w-6" src="/public/images/FocusTasker_logo.png" alt="logo du site" />
         <span className='text-customBlue text-2xl font-semibold'>Focus</span>
         <p className='  text-yellow-500 text-2xl font-semibold '>Tasker</p>
       </div>

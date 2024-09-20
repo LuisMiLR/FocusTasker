@@ -53,7 +53,7 @@ function App() {
           <div className='max-w-md w-full shadow-md bg-slate-50 p-8 rounded-md mt-4'>
             <PomodoroTimer />
             <div className='flex items-center border border-gray-200 rounded-xl mt-8 mb-4 w-full max-w-sm'>
-              <img className="w-16 pr-2 p-1" src="/public/images/FocusTasker_logo.png" alt="logo du site" />
+              <img className="w-14 pr-2 p-1" src="/public/images/FocusTasker_logo.png" alt="logo du site" />
               {/* <img
                 className='object-cover rounded-full w-12 h-12 mr-3'
                 src='https://lmrobles.fr/assets/luisMiguelRobles-RESoZECz.png'

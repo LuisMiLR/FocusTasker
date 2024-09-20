@@ -20,7 +20,7 @@ export default function PomodoroTimer() {
 
   const modes = {
     pomodoro: 1500, // 25 min
-    shortBreak: 100, // 5 min
+    shortBreak: 50, // 5 min
     longBreak: 900, // 15 min
   };
 
