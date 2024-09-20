@@ -52,12 +52,13 @@ function App() {
         <div className='flex flex-col items-center flex-grow'>
           <div className='max-w-md w-full shadow-md bg-slate-50 p-8 rounded-md mt-4'>
             <PomodoroTimer />
-            <div className='flex items-center border border-gray-200 rounded-xl p-4 mt-8 mb-4 w-full max-w-sm'>
-              <img
+            <div className='flex items-center border border-gray-200 rounded-xl mt-8 mb-4 w-full max-w-sm'>
+              <img class="w-20" src="/public/images/FocusTasker_logo.png" alt="logo du site" />
+              {/* <img
                 className='object-cover rounded-full w-12 h-12 mr-3'
                 src='https://lmrobles.fr/assets/luisMiguelRobles-RESoZECz.png'
                 alt='Profil'
-              />
+              /> */}
               <div>
                 <p className='text-customBlue text-xl font-normal'>Todo List</p>
                 <p className='text-customBlue text-base font-normal'>{today}</p>
@@ -73,7 +74,7 @@ function App() {
               />
               <button
                 type='submit'
-                className='bg-sky-800 rounded-md px-4 py-2 ml-2 text-white hover:bg-sky-500 transition shadow-sm'
+                className='bg-sky-800 rounded-md px-4 py-2 ml-2 text-white hover:bg-emeraud transition shadow-sm'
               >
                 Add
               </button>

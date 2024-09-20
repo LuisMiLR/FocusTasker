@@ -11,6 +11,7 @@ export default {
     extend: {
       colors: {
         customBlue: '#075985',
+        emeraud: '#06acd4',
       },
     },
   },

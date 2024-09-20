@@ -20,7 +20,7 @@ export default function PomodoroTimer() {
 
   const modes = {
     pomodoro: 1500, // 25 min
-    shortBreak: 50, // 5 min
+    shortBreak: 300, // 5 min
     longBreak: 900, // 15 min
   };
 
@@ -44,7 +44,7 @@ export default function PomodoroTimer() {
     } else if (secondsLeft === 0) {
       clearInterval(interval);
       if (mode === 'pomodoro') {
-        shortBreakAlert.play();
+       pomodoroAlert.play();
         toast.info('Time for a short break!', {
           position: "bottom-right",
           autoClose: 5000,
@@ -57,7 +57,7 @@ export default function PomodoroTimer() {
         });
         handleModeChange('shortBreak');
       } else if (mode === 'shortBreak') {
-        pomodoroAlert.play();
+        shortBreakAlert.play();
         toast.info('Back to work!', {
           position: "bottom-right",
           autoClose: 5000,
@@ -115,7 +115,7 @@ export default function PomodoroTimer() {
             onClick={() => handleModeChange(m)}
             className={`rounded-md px-4 py-2 ${
               mode === m
-                ? 'bg-sky-500 text-white shadow-md'
+                ? 'bg-emeraud text-white shadow-md'
                 : 'bg-sky-800 text-white shadow-md'
             } transition`}
           >
