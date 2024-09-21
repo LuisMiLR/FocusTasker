@@ -25,9 +25,9 @@ export default function PomodoroTimer() {
   };
 
   const colors = {
-    pomodoro: '#0891b2',
-    shortBreak: '#A7F3D0',
-    longBreak: '#A5F3FC',
+    pomodoro: '#0fa4be', //#2590b5
+    shortBreak: '#0fa4be',//#1AB0CA
+    longBreak: '#0fa4be',//#78d5e5
   };
 
   const pomodoroAlert = new Audio(alarm);
@@ -44,56 +44,56 @@ export default function PomodoroTimer() {
     } else if (secondsLeft === 0) {
       clearInterval(interval);
       if (mode === 'pomodoro') {
-       pomodoroAlert.play();
-        toast.info('Time for a short break!', {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: false,
-          theme: "colored",
-          style: {
-            backgroundColor : '#075985',
-            color: '#ffffff',
-          },
-          transition: Slide,
-        });
-        handleModeChange('shortBreak');
-      } else if (mode === 'shortBreak') {
         shortBreakAlert.play();
-        toast.info('Back to work!', {
-          position: "bottom-right",
+        toast.info('Time for a short break!', {
+          position: 'bottom-right',
           autoClose: 5000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: false,
-          theme: "colored",
+          theme: 'colored',
           style: {
-            backgroundColor : '#075985',
+            backgroundColor: '#075985',
             color: '#ffffff',
           },
           transition: Slide,
         });
-        handleModeChange('pomodoro');
+        // handleModeChange('shortBreak');
+      } else if (mode === 'shortBreak') {
+        pomodoroAlert.play();
+        toast.info('Back to work!', {
+          position: 'bottom-right',
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          theme: 'colored',
+          style: {
+            backgroundColor: '#075985',
+            color: '#ffffff',
+          },
+          transition: Slide,
+        });
+        // handleModeChange('pomodoro');
       } else if (mode === 'longBreak') {
         pomodoroAlert.play();
         toast.info('Back to work!', {
-          position: "bottom-right",
+          position: 'bottom-right',
           autoClose: 5000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: false,
-          theme: "colored",
+          theme: 'colored',
           style: {
-            backgroundColor : '#075985',
+            backgroundColor: '#075985',
             color: '#ffffff',
           },
           transition: Slide,
         });
-        handleModeChange('pomodoro');
+        // handleModeChange('pomodoro');
       }
     }
     return () => clearInterval(interval);
@@ -105,17 +105,20 @@ export default function PomodoroTimer() {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
-  const handleModeChange = () => {
-    if (mode === 'pomodoro') {
-      setMode('shortBreak');
-      setSecondsLeft(modes['shortBreak']);
-    } else if (mode === 'shortBreak') {
-      setMode('pomodoro');
-    } else if (mode === 'longBreak') {
-      setMode('pomodoro');
-      setSecondsLeft(modes['pomodoro']);
-    }
-    setIsActive(false);
+  const handleModeChange = (newMode) => {
+    setMode(newMode)
+    setSecondsLeft(modes[newMode])
+    setIsActive(false)
+    // if (mode === 'pomodoro') {
+    //   setMode('shortBreak');
+    //   setSecondsLeft(modes['shortBreak']);
+    // } else if (mode === 'shortBreak') {
+    //   setMode('pomodoro');
+    // } else if (mode === 'longBreak') {
+    //   setMode('pomodoro');
+    //   setSecondsLeft(modes['pomodoro']);
+    // }
+    // setIsActive(false);
   };
 
   return (
@@ -127,7 +130,7 @@ export default function PomodoroTimer() {
             onClick={() => handleModeChange(m)}
             className={`rounded-md px-4 py-2 ${
               mode === m
-                ? 'bg-emeraud text-white shadow-md'
+                ? 'bg-exa text-white shadow-md'
                 : 'bg-sky-800 text-white shadow-md'
             } transition`}
           >
@@ -143,8 +146,9 @@ export default function PomodoroTimer() {
             styles={buildStyles({
               strokeLinecap: 'butt',
               textColor: '#075985',
-              textSize: '28px',
+              textSize: '26px',
               pathColor: colors[mode],
+              trailColor: '#e5e7eb',
               transition: 'stroke 0.5s ease',
             })}
           />
@@ -166,7 +170,7 @@ export default function PomodoroTimer() {
             setIsActive(false);
             setSecondsLeft(modes[mode]);
           }}
-          className='rounded-md px-5 py-2 bg-sky-800 hover:bg-sky-500 transition text-white shadow-sm'
+          className='rounded-md px-5 py-2 bg-sky-800 hover:bg-exa transition text-white shadow-sm'
         >
           <ArrowPathIcon className='h-5 w-10' />
         </button>
