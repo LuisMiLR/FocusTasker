@@ -25,9 +25,9 @@ export default function PomodoroTimer() {
   };
 
   const colors = {
-    pomodoro: '#0fa4be', //#2590b5
-    shortBreak: '#0fa4be',//#1AB0CA
-    longBreak: '#0fa4be',//#78d5e5
+    pomodoro: 'rgba(120, 213, 229, 0.7)',
+    shortBreak: 'rgba(120, 213, 229, 0.7)',
+    longBreak: 'rgba(120, 213, 229, 0.7)',
   };
 
   const pomodoroAlert = new Audio(alarm);
@@ -109,16 +109,6 @@ export default function PomodoroTimer() {
     setMode(newMode)
     setSecondsLeft(modes[newMode])
     setIsActive(false)
-    // if (mode === 'pomodoro') {
-    //   setMode('shortBreak');
-    //   setSecondsLeft(modes['shortBreak']);
-    // } else if (mode === 'shortBreak') {
-    //   setMode('pomodoro');
-    // } else if (mode === 'longBreak') {
-    //   setMode('pomodoro');
-    //   setSecondsLeft(modes['pomodoro']);
-    // }
-    // setIsActive(false);
   };
 
   return (
@@ -142,11 +132,12 @@ export default function PomodoroTimer() {
         <div className='w-80'>
           <CircularProgressbar
             value={(secondsLeft / modes[mode]) * 100}
+            strokeWidth={5}
             text={formatTime(secondsLeft)}
             styles={buildStyles({
               strokeLinecap: 'butt',
               textColor: '#075985',
-              textSize: '26px',
+              textSize: '28px',
               pathColor: colors[mode],
               trailColor: '#e5e7eb',
               transition: 'stroke 0.5s ease',
